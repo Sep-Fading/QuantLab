@@ -1,0 +1,21 @@
+services:
+  timescaledb:
+    image: timescale/timescaledb:latest-pg16
+    container_name: timescaledb
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      # Persist data
+      - timescaledb_data:/var/lib/postgresql/data
+      # Optional: mount initialization scripts
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    # Optional: increase shared memory for better performance
+    shm_size: 256mb
+
+volumes:
+  timescaledb_data:
