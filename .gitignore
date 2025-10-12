@@ -1,9 +1,22 @@
+# Environmental Vars
 .env
+
+# React
 node_modules/
-target/
+
+# Python
 __pycache__/
 *.pyc
-dist/
+
+# Rust
+Cargo.lock
+target/
+
+# IDE
 .idea/
 .vscode/
+*.swp
+*.swo
+.DS_STORE
+
 
